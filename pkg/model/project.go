@@ -1,6 +1,6 @@
 package model
 
-type Gitrepo struct {
+type Project struct {
 	Name        string
 	Description string
 	Author      string

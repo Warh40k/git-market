@@ -24,7 +24,7 @@ func main() {
 	}
 
 	services := service.NewService()
-	//handlers := handler.NewHandler(services)
+	handlers := handler.NewHandler(services)
 	srv := new(app.Server)
 
 	go func() {
@@ -41,10 +41,6 @@ func main() {
 	logrus.Print("TodoApp shutting down")
 	if err := srv.Shutdown(context.Background()); err != nil {
 		logrus.Errorf("error occured during shutting down %s", err.Error())
-	}
-
-	if err := db.Close(); err != nil {
-		logrus.Errorf("error occured during closing db connection %s", err.Error())
 	}
 }
 

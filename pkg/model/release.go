@@ -3,7 +3,7 @@ package model
 import "time"
 
 type Release struct {
-	App      *Gitrepo
+	App      *Project
 	Version  string
 	Date     time.Time
 	Comments string
