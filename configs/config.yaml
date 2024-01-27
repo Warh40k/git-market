@@ -1,7 +1,11 @@
 port: "8080"
-db:
-  username: "dev"
-  host: "postgres"
-  port: "5432"
-  dbname: "dev"
-  sslmode: "disable"
+rest:
+  github:
+    url: "https://api.github.com"
+    repos:
+      search: "/search/repositories"
+      get: "/repos/{owner}/{repo}"
+    releases:
+      list: "/repos/{owner}/{repo}/releases"
+      last: "/repos/{owner}/{repo}/releases/latest"
+      get_by_tag: "/repos/{owner}/{repo}/releases/tags/{tag}"
