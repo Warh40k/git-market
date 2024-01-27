@@ -17,7 +17,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
 	project := router.Group("/projects")
 	{
-		project.GET("/search", h.searchProjects)
+		project.GET("/search/:search", h.searchProjects)
 		project.GET("/:id", h.getProject)
 
 		release := router.Group("/releases")
@@ -28,7 +28,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			files := router.Group("/files")
 			{
 				files.GET("/", h.getReleaseFiles)
-				files.GET("/", h.getFile)
+				files.GET("/:id", h.getFile)
 			}
 		}
 	}
