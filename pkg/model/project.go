@@ -1,8 +1,7 @@
 package model
 
 type Project struct {
-	Name        string
-	Description string
-	Author      string
-	Url         string
+	Name        string `json:"name"`
+	Owner       Owner  `json:"owner"`
+	Description string `json:"description"`
 }
