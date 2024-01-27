@@ -13,7 +13,7 @@ type statusResponse struct {
 	Status string `json:"status"`
 }
 
-func newErrorResponse(c *gin.Context, statusCode int, message string) {
-	logrus.Error(message)
+func newErrorResponse(c *gin.Context, statusCode int, message string, err error) {
+	logrus.Error(message, err.Error())
 	c.AbortWithStatusJSON(statusCode, responseError{message})
 }

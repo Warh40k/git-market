@@ -1,6 +1,9 @@
 package service
 
-type GitRepo interface {
+import "github.com/Warh40k/gitmarket/pkg/model"
+
+type Project interface {
+	SearchRepos(searchString string) ([]model.Project, error)
 }
 
 type Release interface {
@@ -10,11 +13,13 @@ type File interface {
 }
 
 type Service struct {
-	GitRepo
+	Project
 	Release
 	File
 }
 
 func NewService() *Service {
-	return &Service{}
+	return &Service{
+		Project: NewProjectService(),
+	}
 }

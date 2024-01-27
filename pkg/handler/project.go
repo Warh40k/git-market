@@ -1,11 +1,31 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/Warh40k/gitmarket/pkg/model"
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
-func (*Handler) searchProjects(c *gin.Context) {
-
+type getSearchResultsResponse struct {
+	Data []model.Project `json:"data"`
 }
 
-func (*Handler) getProject(c *gin.Context) {
+func (h *Handler) searchProjects(c *gin.Context) {
+	searchString := c.Param("search")
+	if searchString == "" {
+		newErrorResponse(c, http.StatusBadRequest, "no search param", nil)
+		return
+	}
+	data, err := h.services.SearchRepos(searchString)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "error searching projects", err)
+		return
+	}
+	c.JSON(http.StatusOK, getSearchResultsResponse{
+		Data: data,
+	})
+}
+
+func (h *Handler) getProject(c *gin.Context) {
 
 }
