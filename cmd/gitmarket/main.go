@@ -13,6 +13,7 @@ import (
 	"syscall"
 )
 
+// TODO: перенести pkg в internal (в pkg оставить сторонние либы, для работы с REST, логгер, например)
 func main() {
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 	if err := initConfig(); err != nil {

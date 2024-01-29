@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/Warh40k/gitmarket/pkg/model"
+	"github.com/Warh40k/gitmarket/pkg/domain"
 	"github.com/go-resty/resty/v2"
 	"github.com/spf13/viper"
 	"os"
@@ -15,10 +15,10 @@ func NewProjectService() *ProjectService {
 }
 
 type SearchResponse struct {
-	Items []model.Project `json:"items"`
+	Items []domain.Project `json:"items"`
 }
 
-func (s *ProjectService) SearchRepos(searchString string) ([]model.Project, error) {
+func (s *ProjectService) SearchRepos(searchString string) ([]domain.Project, error) {
 	client := resty.New()
 	resp, err := client.R().
 		EnableTrace().

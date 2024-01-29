@@ -1,13 +1,13 @@
 package handler
 
 import (
-	"github.com/Warh40k/gitmarket/pkg/model"
+	"github.com/Warh40k/gitmarket/pkg/domain"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 type getSearchResultsResponse struct {
-	Data []model.Project `json:"data"`
+	Data []domain.Project `json:"data"`
 }
 
 func (h *Handler) searchProjects(c *gin.Context) {

@@ -1,9 +1,9 @@
 package service
 
-import "github.com/Warh40k/gitmarket/pkg/model"
+import "github.com/Warh40k/gitmarket/pkg/domain"
 
 type Project interface {
-	SearchRepos(searchString string) ([]model.Project, error)
+	SearchRepos(searchString string) ([]domain.Project, error)
 }
 
 type Release interface {
